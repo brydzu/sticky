@@ -52,7 +52,7 @@
           etse = elementTop - s.topSpacing - extra;
 
         //update height in case of dynamic content
-        s.stickyWrapper.css('height', s.stickyElement.outerHeight());
+        s.stickyWrapper.css('height', s.stickyElement.outerHeight(true));
 
         if (scrollTop <= etse) {
           if (s.currentTop !== null) {
@@ -69,7 +69,7 @@
           }
         }
         else {
-          var newTop = documentHeight - s.stickyElement.outerHeight()
+          var newTop = documentHeight - s.stickyElement.outerHeight(true)
             - s.topSpacing - s.bottomSpacing - scrollTop - extra;
           if (newTop < 0) {
             newTop = newTop + s.topSpacing;
@@ -114,7 +114,7 @@
 
           // Check if sticky has reached end of container and stop sticking
           var stickyWrapperContainer = s.stickyWrapper.parent();
-          var unstick = (s.stickyElement.offset().top + s.stickyElement.outerHeight() >= stickyWrapperContainer.offset().top + stickyWrapperContainer.outerHeight()) && (s.stickyElement.offset().top <= s.topSpacing);
+          var unstick = (s.stickyElement.offset().top + s.stickyElement.outerHeight(true) >= stickyWrapperContainer.offset().top + stickyWrapperContainer.outerHeight(true)) && (s.stickyElement.offset().top <= s.topSpacing);
 
           if( unstick ) {
             s.stickyElement
@@ -189,7 +189,7 @@
         var element = $(stickyElement);
         var stickyWrapper = element.parent();
         if (stickyWrapper) {
-          stickyWrapper.css('height', element.outerHeight());
+          stickyWrapper.css('height', element.outerHeight(true));
         }
       },
 
